@@ -1,0 +1,16 @@
+2020-11-17 12:55:03.714 +01:00 [INF] Connecting to MQTT server
+2020-11-17 12:55:04.094 +01:00 [INF] ---> Connect called
+2020-11-17 12:59:03.862 +01:00 [INF] Connecting to MQTT server
+2020-11-17 12:59:04.138 +01:00 [INF] ---> Connect called
+2020-11-17 13:03:05.135 +01:00 [INF] Connecting to MQTT server
+2020-11-17 13:03:05.370 +01:00 [INF] ---> Connect called
+2020-11-17 13:34:04.241 +01:00 [INF] Connecting to MQTT server
+2020-11-17 13:34:04.430 +01:00 [INF] ---> Connect called
+2020-11-17 13:41:35.248 +01:00 [INF] Connecting to MQTT server
+2020-11-17 13:41:35.437 +01:00 [INF] ---> Connect called
+2020-11-17 13:41:54.857 +01:00 [INF] Connecting to MQTT server
+2020-11-17 13:41:55.040 +01:00 [INF] ---> Connect called
+2020-11-17 13:42:35.625 +01:00 [INF] Connecting to MQTT server
+2020-11-17 13:42:35.813 +01:00 [INF] ---> Connect called
+2020-11-17 13:45:32.100 +01:00 [INF] Connecting to MQTT server
+2020-11-17 13:45:32.286 +01:00 [INF] ---> Connect called

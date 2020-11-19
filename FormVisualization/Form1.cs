@@ -17,7 +17,7 @@ namespace FormVisualization
     public partial class Form1 : Form
     {
         private MqttClient MQTTClient;
-        private DataTable data;
+        private HUECOD huecod;
 
         private const string COLUMN_TIME = "Tid";
         private const string COLUMN_MESSAGE = "Besked";
@@ -30,18 +30,6 @@ namespace FormVisualization
         public Form1()
         {
             InitializeComponent();
-            InitializeDataView();
-        }
-
-        private void InitializeDataView()
-        {
-            data = new DataTable();
-            data.Columns.Add(COLUMN_TIME);
-            data.Columns.Add(COLUMN_MESSAGE);
-            data.Columns.Add(COLUMN_PATIENT);
-
-            dataView.DataSource = this.data;
-            // dataView.AutoGenerateColumns = true;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -54,79 +42,12 @@ namespace FormVisualization
         {
             DisplayLogMessage("Initializing MQTT client");
 
-            var server = "aalserver.au.dk";
-            var port = 8883;
-
-            this.MQTTClient = new MqttClient(server, port, true, null, null, MqttSslProtocols.TLSv1_2);
-
-            MQTTClient.MqttMsgPublishReceived += MqttMsgPublishReceived;
-            /*MQTTClient.MqttMsgSubscribed += Client_MqttMsgSubscribed;
-            MQTTClient.MqttMsgUnsubscribed += Client_MqttMsgUnsubscribed;
-            MQTTClient.MqttMsgPublished += Client_MqttMsgPublished;*/
-            MQTTClient.ConnectionClosed += MqttConnectionClosed;
-
-            MQTTClient.Subscribe(new string[] { "home0", "home0", "home0" }, new byte[] { MqttMsgBase.QOS_LEVEL_AT_MOST_ONCE, MqttMsgBase.QOS_LEVEL_AT_LEAST_ONCE, MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE });
-
-
-            ConnectWithRetry();
+            huecod = new HUECOD();
+            huecod.ConnectionStatusChanged += Huecod_ConnectionStatusChanged;
+            huecod.MqttMsgPublishReceived += Huecod_MsgReceived;
+            huecod.Subscribe();
+            huecod.ConnectWithRetry();
         }
-
-        private void ConnectWithRetry()
-        {
-            try
-            {
-                DisplayLogMessage("Connecting...");
-                var user = "aal";
-                var pass = "aal";
-                var keepAlive = (ushort)10;
-                var clientId = Guid.NewGuid().ToString();
-                DisplayLogMessage("Using client ID: " + clientId);
-                
-                var state = MQTTClient.Connect(clientId, user, pass, true, keepAlive);
-                DisplayLogMessage("State: " + state.ToString());
-
-                DisplayLogMessage("Connected: " + MQTTClient.IsConnected.ToString());
-
-                if(!MQTTClient.IsConnected)
-                {
-                    Thread.Sleep(2000);
-                    ConnectWithRetry();
-                }
-            }
-            catch (Exception)
-            {
-                DisplayLogMessage("Failed to connect, retrying in 5 seconds...");
-                Thread.Sleep(5000);
-                ConnectWithRetry();
-            }
-        }
-
-        private void DisplayLogMessage(string msg)
-        {
-            if (!logOutput.InvokeRequired)
-            {
-                logOutput.AppendText(msg + Environment.NewLine);
-                return;
-            }
-
-            if (!isClosing)
-            {
-                invokeInProgress = true;
-                logOutput.Invoke((Action)(() =>
-                {
-                    logOutput.AppendText(msg + Environment.NewLine);
-                }));
-                invokeInProgress = false;
-            }
-            
-        }
-
-        private void MqttConnectionClosed(object sender, EventArgs e)
-        {
-            DisplayLogMessage("MQTT connection closed event. Connection state: " + MQTTClient.IsConnected.ToString());
-
-        }
-
 
         /// <summary>
         /// Handler for receiving data from the MQTT server. This is where the main functionality is placed.
@@ -139,7 +60,7 @@ namespace FormVisualization
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void MqttMsgPublishReceived(object sender, MqttMsgPublishEventArgs e)
+        private void Huecod_MsgReceived(object sender, MqttMsgPublishEventArgs e)
         {
             var raw = Encoding.UTF8.GetString(e.Message);
 
@@ -160,7 +81,7 @@ namespace FormVisualization
                 });
                 
 
-                dataView.Invoke((Action)(() =>
+                listView1.Invoke((Action)(() =>
                 {
                     listView1.Items.Add(item);
                 }));
@@ -180,16 +101,52 @@ namespace FormVisualization
         {
             isClosing = true;
 
-            if(MQTTClient.IsConnected)
+            if(huecod.IsConnected)
             {
-                DisplayLogMessage("Cleaning up connection");
-                MQTTClient.Disconnect();
+                DisplayLogMessage("Closing connection");
+                huecod.Disconnect();
             }
 
             await Task.Factory.StartNew(() =>
             {
                 while (invokeInProgress) ;
             });
+        }
+
+        private void Huecod_ConnectionStatusChanged(object sender, StatusChangeEventArgs args)
+        {
+            if (!labelConnectionStatus.InvokeRequired)
+            {
+                labelConnectionStatus.Text = args.Status;
+                return;
+            }
+
+            if (!isClosing)
+            {
+                Invoke((Action)(() =>
+                {
+                    labelConnectionStatus.Text = args.Status;
+                }));
+            }
+        }
+
+        private void DisplayLogMessage(string msg)
+        {
+            if (!logOutput.InvokeRequired)
+            {
+                logOutput.AppendText(msg + Environment.NewLine);
+                return;
+            }
+
+            if (!isClosing)
+            {
+                invokeInProgress = true;
+                logOutput.Invoke((Action)(() =>
+                {
+                    logOutput.AppendText(msg + Environment.NewLine);
+                }));
+                invokeInProgress = false;
+            }
         }
     }
 }

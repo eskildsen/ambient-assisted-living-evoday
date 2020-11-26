@@ -27,6 +27,8 @@ namespace FormVisualization
         private bool invokeInProgress = false;
         private bool isClosing = false;
 
+        private Simulation simulator = new Simulation();
+
         public Form1()
         {
             InitializeComponent();
@@ -47,6 +49,9 @@ namespace FormVisualization
             huecod.MqttMsgPublishReceived += Huecod_MsgReceived;
             huecod.Subscribe();
             huecod.ConnectWithRetry();
+
+            simulator.setMqttConnection(huecod);
+
         }
 
         /// <summary>
@@ -147,6 +152,36 @@ namespace FormVisualization
                 }));
                 invokeInProgress = false;
             }
+        }
+
+        private void btnSimulateToilet_Click(object sender, EventArgs e)
+        {
+            simulator.toilet();
+        }
+
+        private void btnSimulateFlush_Click(object sender, EventArgs e)
+        {
+            simulator.toiletFlush();
+        }
+
+        private void btnSimulateHandWashing_Click(object sender, EventArgs e)
+        {
+            simulator.handWash();
+        }
+
+        private void btnSimulateSoap_Click(object sender, EventArgs e)
+        {
+            simulator.soap();
+        }
+
+        private void btnSimulateToothbrush_Click(object sender, EventArgs e)
+        {
+            simulator.toothbrush();
+        }
+
+        private void btnSimulateLeaveRoom_Click(object sender, EventArgs e)
+        {
+            simulator.leaveRoom();
         }
     }
 }

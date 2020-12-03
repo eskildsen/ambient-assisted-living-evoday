@@ -27,6 +27,8 @@ namespace FormVisualization
         private bool invokeInProgress = false;
         private bool isClosing = false;
 
+        private SmartMirrorController eventHandler;
+
         private Simulation simulator = new Simulation();
 
         public Form1()
@@ -34,10 +36,18 @@ namespace FormVisualization
             InitializeComponent();
         }
 
+        private void EventHandler_IconsUpdated(object sender, EventArgs e)
+        {
+            ToggleIcons();
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
+            eventHandler = new SmartMirrorController();
+            eventHandler.IconsUpdated += EventHandler_IconsUpdated;
             mqttWorker = new Thread(new ThreadStart(InitMqttClient));
             mqttWorker.Start();
+            ToggleIcons();
         }
 
         private void InitMqttClient()
@@ -90,11 +100,43 @@ namespace FormVisualization
                 {
                     listView1.Items.Add(item);
                 }));
+
+                switch (ev.EventType)
+                {
+                    case "OpenCare.EVODAY.EDL.ToiletOccupancy":
+                        eventHandler.ToiletEvent(ev);
+                        ToggleIcons();
+                        break;
+                    case "OpenCare.EVODAY.EDL.HandWashingEvent":
+                        eventHandler.HandwashEvent(ev);
+                        ToggleIcons();
+                        break;
+                    case "OpenCare.EVODAY.EDL.SoapDispensnig":
+                        eventHandler.SoapEvent(ev);
+                        ToggleIcons();
+                        break;
+                }
             }
             catch (Exception ex)
             {
                 DisplayLogMessage("Failed to parse event, got error " + ex + ". Event: " + raw);
             }
+        }
+
+        private void ToggleIcons()
+        {
+            Invoke((Action)(() =>
+            {
+                iconHandwash.Visible = eventHandler.HandwashIcon;
+                iconSoap.Visible = eventHandler.SoapIcon;
+                iconToothbrush.Visible = eventHandler.ToothbrushIcon;
+                iconHandwash.Refresh();
+                iconHandwash.Update();
+                iconSoap.Refresh();
+                iconSoap.Update();
+                iconToothbrush.Refresh();
+                iconToothbrush.Update();
+            }));
         }
 
         private BasicEvent ParseEvent(byte[] message)

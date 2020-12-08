@@ -54,8 +54,8 @@ namespace FormVisualization
             client.ConnectionClosed += OnConnectionClosed;
 
             client.Subscribe(new string[] { "home0", "home0", "home0" }, new byte[] {
-                MqttMsgBase.QOS_LEVEL_AT_MOST_ONCE,
-                MqttMsgBase.QOS_LEVEL_AT_LEAST_ONCE,
+                MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE,
+                MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE,
                 MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE
             });
         }

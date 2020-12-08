@@ -203,7 +203,9 @@ namespace FormVisualization
 
         private void btnSimulateFlush_Click(object sender, EventArgs e)
         {
-            simulator.toiletFlush();
+            logOutput.Clear();
+            listView1.Items.Clear();
+            eventHandler.Reset();
         }
 
         private void btnSimulateHandWashing_Click(object sender, EventArgs e)
@@ -224,6 +226,33 @@ namespace FormVisualization
         private void btnSimulateLeaveRoom_Click(object sender, EventArgs e)
         {
             simulator.leaveRoom();
+        }
+
+        private void iconContainer_Click(object sender, EventArgs e)
+        {
+            if (isIconsFullScreen())
+                restoreOriginalLayoutSizes();
+            else
+                makeIconsFullScreen();
+        }
+
+        private bool isIconsFullScreen()
+        {
+            return !tableLayoutPanel1.Visible;
+        }
+
+        private void restoreOriginalLayoutSizes()
+        {
+            tableLayoutPanel1.Controls.Add(iconContainer);
+            tableLayoutPanel1.Show();
+            this.FormBorderStyle = FormBorderStyle.Sizable;
+        }
+
+        private void makeIconsFullScreen()
+        {
+            tableLayoutPanel1.Hide();
+            Controls.Add(iconContainer);
+            this.FormBorderStyle = FormBorderStyle.None;
         }
     }
 }

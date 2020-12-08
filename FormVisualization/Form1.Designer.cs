@@ -78,14 +78,13 @@
             this.tableLayoutPanel1.Controls.Add(this.groupBox2, 1, 3);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 4;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 119F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(3829, 1109);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1407, 445);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // groupBox1
@@ -93,12 +92,10 @@
             this.tableLayoutPanel1.SetColumnSpan(this.groupBox1, 2);
             this.groupBox1.Controls.Add(this.logOutput);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(1922, 7);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.groupBox1.Location = new System.Drawing.Point(706, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.tableLayoutPanel1.SetRowSpan(this.groupBox1, 3);
-            this.groupBox1.Size = new System.Drawing.Size(1899, 975);
+            this.groupBox1.Size = new System.Drawing.Size(698, 387);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Log";
@@ -106,11 +103,10 @@
             // logOutput
             // 
             this.logOutput.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.logOutput.Location = new System.Drawing.Point(8, 38);
-            this.logOutput.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.logOutput.Location = new System.Drawing.Point(3, 16);
             this.logOutput.Multiline = true;
             this.logOutput.Name = "logOutput";
-            this.logOutput.Size = new System.Drawing.Size(1883, 930);
+            this.logOutput.Size = new System.Drawing.Size(692, 368);
             this.logOutput.TabIndex = 0;
             // 
             // listView1
@@ -127,11 +123,10 @@
             this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listView1.FullRowSelect = true;
             this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(8, 7);
-            this.listView1.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.listView1.Location = new System.Drawing.Point(3, 3);
             this.listView1.Name = "listView1";
             this.tableLayoutPanel1.SetRowSpan(this.listView1, 2);
-            this.listView1.Size = new System.Drawing.Size(1898, 645);
+            this.listView1.Size = new System.Drawing.Size(697, 256);
             this.listView1.TabIndex = 4;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -184,23 +179,22 @@
             this.iconContainer.Controls.Add(this.iconSoap, 1, 0);
             this.iconContainer.Controls.Add(this.iconHandwash, 0, 0);
             this.iconContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.iconContainer.Location = new System.Drawing.Point(8, 666);
-            this.iconContainer.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.iconContainer.Location = new System.Drawing.Point(3, 265);
             this.iconContainer.Name = "iconContainer";
             this.iconContainer.RowCount = 1;
             this.tableLayoutPanel1.SetRowSpan(this.iconContainer, 2);
             this.iconContainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.iconContainer.Size = new System.Drawing.Size(1898, 436);
+            this.iconContainer.Size = new System.Drawing.Size(697, 177);
             this.iconContainer.TabIndex = 3;
+            this.iconContainer.Click += new System.EventHandler(this.iconContainer_Click);
             // 
             // pictureBox4
             // 
             this.pictureBox4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox4.Image = global::FormVisualization.Properties.Resources.flush;
-            this.pictureBox4.Location = new System.Drawing.Point(1430, 7);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.pictureBox4.Location = new System.Drawing.Point(525, 3);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(460, 422);
+            this.pictureBox4.Size = new System.Drawing.Size(169, 171);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox4.TabIndex = 3;
             this.pictureBox4.TabStop = false;
@@ -210,10 +204,9 @@
             // 
             this.iconToothbrush.Dock = System.Windows.Forms.DockStyle.Fill;
             this.iconToothbrush.Image = global::FormVisualization.Properties.Resources.toothbrush;
-            this.iconToothbrush.Location = new System.Drawing.Point(956, 7);
-            this.iconToothbrush.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.iconToothbrush.Location = new System.Drawing.Point(351, 3);
             this.iconToothbrush.Name = "iconToothbrush";
-            this.iconToothbrush.Size = new System.Drawing.Size(458, 422);
+            this.iconToothbrush.Size = new System.Drawing.Size(168, 171);
             this.iconToothbrush.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.iconToothbrush.TabIndex = 2;
             this.iconToothbrush.TabStop = false;
@@ -222,10 +215,9 @@
             // 
             this.iconSoap.Dock = System.Windows.Forms.DockStyle.Fill;
             this.iconSoap.Image = global::FormVisualization.Properties.Resources.soap_dispenser;
-            this.iconSoap.Location = new System.Drawing.Point(482, 7);
-            this.iconSoap.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.iconSoap.Location = new System.Drawing.Point(177, 3);
             this.iconSoap.Name = "iconSoap";
-            this.iconSoap.Size = new System.Drawing.Size(458, 422);
+            this.iconSoap.Size = new System.Drawing.Size(168, 171);
             this.iconSoap.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.iconSoap.TabIndex = 1;
             this.iconSoap.TabStop = false;
@@ -234,10 +226,9 @@
             // 
             this.iconHandwash.Dock = System.Windows.Forms.DockStyle.Fill;
             this.iconHandwash.Image = global::FormVisualization.Properties.Resources.wash_hands;
-            this.iconHandwash.Location = new System.Drawing.Point(8, 7);
-            this.iconHandwash.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.iconHandwash.Location = new System.Drawing.Point(3, 3);
             this.iconHandwash.Name = "iconHandwash";
-            this.iconHandwash.Size = new System.Drawing.Size(458, 422);
+            this.iconHandwash.Size = new System.Drawing.Size(168, 171);
             this.iconHandwash.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.iconHandwash.TabIndex = 0;
             this.iconHandwash.TabStop = false;
@@ -251,21 +242,18 @@
             this.groupSimulations.Controls.Add(this.btnSimulateHandWashing);
             this.groupSimulations.Controls.Add(this.btnSimulateToilet);
             this.groupSimulations.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupSimulations.Location = new System.Drawing.Point(2496, 996);
-            this.groupSimulations.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.groupSimulations.Location = new System.Drawing.Point(917, 396);
             this.groupSimulations.Name = "groupSimulations";
-            this.groupSimulations.Padding = new System.Windows.Forms.Padding(8, 7, 8, 7);
-            this.groupSimulations.Size = new System.Drawing.Size(1325, 106);
+            this.groupSimulations.Size = new System.Drawing.Size(487, 46);
             this.groupSimulations.TabIndex = 6;
             this.groupSimulations.TabStop = false;
             this.groupSimulations.Text = "Simuleringer";
             // 
             // btnSimulateLeaveRoom
             // 
-            this.btnSimulateLeaveRoom.Location = new System.Drawing.Point(1096, 38);
-            this.btnSimulateLeaveRoom.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.btnSimulateLeaveRoom.Location = new System.Drawing.Point(411, 16);
             this.btnSimulateLeaveRoom.Name = "btnSimulateLeaveRoom";
-            this.btnSimulateLeaveRoom.Size = new System.Drawing.Size(200, 55);
+            this.btnSimulateLeaveRoom.Size = new System.Drawing.Size(75, 23);
             this.btnSimulateLeaveRoom.TabIndex = 8;
             this.btnSimulateLeaveRoom.Text = "Forlader rum";
             this.btnSimulateLeaveRoom.UseVisualStyleBackColor = true;
@@ -273,10 +261,9 @@
             // 
             // btnSimulateSoap
             // 
-            this.btnSimulateSoap.Location = new System.Drawing.Point(664, 38);
-            this.btnSimulateSoap.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.btnSimulateSoap.Location = new System.Drawing.Point(249, 16);
             this.btnSimulateSoap.Name = "btnSimulateSoap";
-            this.btnSimulateSoap.Size = new System.Drawing.Size(200, 55);
+            this.btnSimulateSoap.Size = new System.Drawing.Size(75, 23);
             this.btnSimulateSoap.TabIndex = 7;
             this.btnSimulateSoap.Text = "Sæbe";
             this.btnSimulateSoap.UseVisualStyleBackColor = true;
@@ -284,10 +271,9 @@
             // 
             // btnSimulateToothbrush
             // 
-            this.btnSimulateToothbrush.Location = new System.Drawing.Point(880, 38);
-            this.btnSimulateToothbrush.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.btnSimulateToothbrush.Location = new System.Drawing.Point(330, 16);
             this.btnSimulateToothbrush.Name = "btnSimulateToothbrush";
-            this.btnSimulateToothbrush.Size = new System.Drawing.Size(200, 55);
+            this.btnSimulateToothbrush.Size = new System.Drawing.Size(75, 23);
             this.btnSimulateToothbrush.TabIndex = 5;
             this.btnSimulateToothbrush.Text = "Tandbørste";
             this.btnSimulateToothbrush.UseVisualStyleBackColor = true;
@@ -295,21 +281,19 @@
             // 
             // btnSimulateFlush
             // 
-            this.btnSimulateFlush.Location = new System.Drawing.Point(232, 38);
-            this.btnSimulateFlush.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.btnSimulateFlush.Location = new System.Drawing.Point(87, 16);
             this.btnSimulateFlush.Name = "btnSimulateFlush";
-            this.btnSimulateFlush.Size = new System.Drawing.Size(200, 55);
+            this.btnSimulateFlush.Size = new System.Drawing.Size(75, 23);
             this.btnSimulateFlush.TabIndex = 6;
-            this.btnSimulateFlush.Text = "Skyld ud";
+            this.btnSimulateFlush.Text = "Reset";
             this.btnSimulateFlush.UseVisualStyleBackColor = true;
             this.btnSimulateFlush.Click += new System.EventHandler(this.btnSimulateFlush_Click);
             // 
             // btnSimulateHandWashing
             // 
-            this.btnSimulateHandWashing.Location = new System.Drawing.Point(448, 38);
-            this.btnSimulateHandWashing.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.btnSimulateHandWashing.Location = new System.Drawing.Point(168, 16);
             this.btnSimulateHandWashing.Name = "btnSimulateHandWashing";
-            this.btnSimulateHandWashing.Size = new System.Drawing.Size(200, 55);
+            this.btnSimulateHandWashing.Size = new System.Drawing.Size(75, 23);
             this.btnSimulateHandWashing.TabIndex = 4;
             this.btnSimulateHandWashing.Text = "Håndvask";
             this.btnSimulateHandWashing.UseVisualStyleBackColor = true;
@@ -317,10 +301,9 @@
             // 
             // btnSimulateToilet
             // 
-            this.btnSimulateToilet.Location = new System.Drawing.Point(16, 38);
-            this.btnSimulateToilet.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.btnSimulateToilet.Location = new System.Drawing.Point(6, 16);
             this.btnSimulateToilet.Name = "btnSimulateToilet";
-            this.btnSimulateToilet.Size = new System.Drawing.Size(200, 55);
+            this.btnSimulateToilet.Size = new System.Drawing.Size(75, 23);
             this.btnSimulateToilet.TabIndex = 3;
             this.btnSimulateToilet.Text = "På Toilet";
             this.btnSimulateToilet.UseVisualStyleBackColor = true;
@@ -330,11 +313,9 @@
             // 
             this.groupBox2.Controls.Add(this.labelConnectionStatus);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox2.Location = new System.Drawing.Point(1922, 996);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.groupBox2.Location = new System.Drawing.Point(706, 396);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(8, 7, 8, 7);
-            this.groupBox2.Size = new System.Drawing.Size(558, 106);
+            this.groupBox2.Size = new System.Drawing.Size(205, 46);
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Forbindelse";
@@ -342,20 +323,18 @@
             // labelConnectionStatus
             // 
             this.labelConnectionStatus.AutoSize = true;
-            this.labelConnectionStatus.Location = new System.Drawing.Point(19, 38);
-            this.labelConnectionStatus.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.labelConnectionStatus.Location = new System.Drawing.Point(7, 16);
             this.labelConnectionStatus.Name = "labelConnectionStatus";
-            this.labelConnectionStatus.Size = new System.Drawing.Size(107, 32);
+            this.labelConnectionStatus.Size = new System.Drawing.Size(42, 13);
             this.labelConnectionStatus.TabIndex = 0;
             this.labelConnectionStatus.Text = "#status";
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(3829, 1109);
+            this.ClientSize = new System.Drawing.Size(1407, 445);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.Name = "Form1";
             this.Text = "MQTT Client";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosingAsync);
